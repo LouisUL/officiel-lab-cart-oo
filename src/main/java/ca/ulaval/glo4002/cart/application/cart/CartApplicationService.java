@@ -4,6 +4,7 @@ import java.util.List;
 
 import ca.ulaval.glo4002.cart.domain.cart.Cart;
 import ca.ulaval.glo4002.cart.domain.cart.CartItem;
+import ca.ulaval.glo4002.cart.domain.cart.CartRepository;
 import ca.ulaval.glo4002.cart.domain.shop.ShopItem;
 
 public class CartApplicationService {
@@ -11,8 +12,8 @@ public class CartApplicationService {
     public static final int SHIPPING_PRICE_PER_KG = 2;
     private CartRepository cartRepository;
 
-	public CartApplicationService() {
-		this.cartRepository = new CartRepository();
+	public CartApplicationService(CartRepository cartRepository) {
+		this.cartRepository = cartRepository;
 	}
 
 	public Cart findOrCreateCartForClient(String email) {

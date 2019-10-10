@@ -1,5 +1,6 @@
 package ca.ulaval.glo4002.cart;
 
+import ca.ulaval.glo4002.cart.interfaces.rest.PersistenceProvider;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -45,10 +46,10 @@ public class CartServer implements Runnable {
 	}
 
 	private CartResource createCartResource() {
-		return new CartResource();
+		return new CartResource(PersistenceProvider.getShopRepository(), PersistenceProvider.getCartRepository());
 	}
 
 	private Object createClientResource() {
-		return new ShopResource();
+		return new ShopResource(PersistenceProvider.getShopRepository());
 	}
 }
